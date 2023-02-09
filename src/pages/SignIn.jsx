@@ -12,14 +12,14 @@ export default function SignIn() {
     password: "",
   });
   const { email, password } = formData;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   function onChange(e) {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   }
-  
+
   async function onSubmit(e) {
     e.preventDefault();
     try {
