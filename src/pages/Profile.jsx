@@ -149,10 +149,10 @@ export default function Profile() {
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
-                  // onDelete={() => onDelete(listing.id)}
-                  // onEdit={() => onEdit(listing.id)}
+                  onDelete={() => onDelete(listing.id)}
+                  onEdit={() => onEdit(listing.id)}
                 />
-              ))}
+              ))} 
             </ul>
           </>
         )}
