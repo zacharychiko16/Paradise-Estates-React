@@ -147,17 +147,26 @@ export default function CreateListing() {
       });
     }
 
-    const imgUrls = await Promise.all(
-      [...images].map((image) => storeImage(image))
-    ).catch((error) => {
-      setLoading(false);
-      toast.error("Images not uploaded");
-      return;
-    });
+    // const imgUrls = await Promise.all(
+    //   [...images].map((image) => storeImage(image))
+    // ).catch((error) => {
+    //   setLoading(false);
+    //   toast.error("Images not uploaded");
+    //   return;
+    // });
 
+    const imgUrls = await Promise.all(
+      [...images].map((image) => storeImage(image).catch((error) => {
+        console.error("Error uploading image:", error);
+        return null;
+      }))
+    );
+    const filteredImgUrls = imgUrls.filter((url) => url !== null && url !== undefined);
+    
+    // Filter out any null values from the imgUrls array
     const formDataCopy = {
       ...formData,
-      imgUrls,
+      imgUrls: filteredImgUrls,
       geolocation,
       timestamp: serverTimestamp(),
       userRef: auth.currentUser.uid,

@@ -30,7 +30,7 @@ export default function Header() {
             onClick={() => navigate("/")}
             src="https://i.pinimg.com/originals/8d/d4/27/8dd4275c6a357c7f96fb1221913efc81.jpg"
             alt="logo"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover cursor-pointer"
           />
         </div>
         <div>
